@@ -1,4 +1,4 @@
-import{_ as n,c as a,o as s,d as e}from"./app.72e1d3fb.js";const h='{"title":"\u90E8\u7F72","description":"","frontmatter":{},"headers":[{"level":2,"title":"\u5B89\u88C5 gitlab-runner","slug":"\u5B89\u88C5-gitlab-runner"},{"level":2,"title":"\u6CE8\u518C","slug":"\u6CE8\u518C"},{"level":2,"title":"\u8FD0\u884C","slug":"\u8FD0\u884C"},{"level":2,"title":"\u914D\u7F6E gitlab-ci.yml","slug":"\u914D\u7F6E-gitlab-ci-yml"}],"relativePath":"deploy/index.md"}',t={},l=e(`<h1 id="\u90E8\u7F72" tabindex="-1">\u90E8\u7F72 <a class="header-anchor" href="#\u90E8\u7F72" aria-hidden="true">#</a></h1><h2 id="\u5B89\u88C5-gitlab-runner" tabindex="-1">\u5B89\u88C5 gitlab-runner <a class="header-anchor" href="#\u5B89\u88C5-gitlab-runner" aria-hidden="true">#</a></h2><p>\u4E0B\u8F7D</p><div class="language-"><pre><code>sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-arm
+import{_ as n,c as a,o as s,d as e}from"./app.72e1d3fb.js";const h='{"title":"\u90E8\u7F72","description":"","frontmatter":{},"headers":[{"level":2,"title":"\u5B89\u88C5 gitlab-runner","slug":"\u5B89\u88C5-gitlab-runner"},{"level":2,"title":"\u6CE8\u518C","slug":"\u6CE8\u518C"},{"level":2,"title":"\u8FD0\u884C","slug":"\u8FD0\u884C"},{"level":2,"title":"\u914D\u7F6E gitlab-ci.yml","slug":"\u914D\u7F6E-gitlab-ci-yml"}],"relativePath":"deploy/index.md"}',t={},p=e(`<h1 id="\u90E8\u7F72" tabindex="-1">\u90E8\u7F72 <a class="header-anchor" href="#\u90E8\u7F72" aria-hidden="true">#</a></h1><h2 id="\u5B89\u88C5-gitlab-runner" tabindex="-1">\u5B89\u88C5 gitlab-runner <a class="header-anchor" href="#\u5B89\u88C5-gitlab-runner" aria-hidden="true">#</a></h2><p>\u4E0B\u8F7D</p><div class="language-"><pre><code>sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-arm
 </code></pre></div><p>\u4E0B\u8F7D\u5B8C\u4E4B\u540E\uFF0C\u9700\u8981\u7ED9 gitlab-runner \u6267\u884C\u6743\u9650</p><div class="language-"><pre><code>sudo chmod +x /usr/local/bin/gitlab-runner
 </code></pre></div><p>\u4E4B\u540E\u521B\u5EFA\u4E00\u4E2A gitlab-runner \u7528\u6237\uFF0C\u4E4B\u540E\u4F7F\u7528 CI/CD \u65F6\uFF0C\u90FD\u662F\u5728\u8FD9\u4E2A\u7528\u6237\u4E0B\u8FDB\u884C\u7684</p><div class="language-"><pre><code>sudo useradd --comment &#39;GitLab Runner&#39; --create-home gitlab-runner --shell /bin/bash
 </code></pre></div><p>\u521B\u5EFA\u597D\u4E86\u7528\u6237\u4E4B\u540E\uFF0C\u63A5\u4E0B\u6765\u5B89\u88C5 gitlab-runner</p><div class="language-"><pre><code>sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
@@ -11,19 +11,27 @@ import{_ as n,c as a,o as s,d as e}from"./app.72e1d3fb.js";const h='{"title":"\u
   <span class="token punctuation">-</span> deploy
 <span class="token key atrule">init</span><span class="token punctuation">:</span>
   <span class="token key atrule">stage</span><span class="token punctuation">:</span> init
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> master
   <span class="token key atrule">script</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> npm install
 <span class="token key atrule">lint</span><span class="token punctuation">:</span>
   <span class="token key atrule">stage</span><span class="token punctuation">:</span> lint
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> master
   <span class="token key atrule">script</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> npm run lint
 <span class="token key atrule">build</span><span class="token punctuation">:</span>
   <span class="token key atrule">stage</span><span class="token punctuation">:</span> build
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> master
   <span class="token key atrule">script</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> npm run build
 <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
   <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> master
   <span class="token key atrule">script</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> rm <span class="token punctuation">-</span>rf /home/hl/front/das
     <span class="token punctuation">-</span> cp <span class="token punctuation">-</span>r dist /home/hl/front/das
-</code></pre></div>`,17),p=[l];function i(r,c,o,u,d,k){return s(),a("div",null,p)}var b=n(t,[["render",i]]);export{h as __pageData,b as default};
+</code></pre></div>`,17),l=[p];function o(c,i,r,u,d,k){return s(),a("div",null,l)}var b=n(t,[["render",o]]);export{h as __pageData,b as default};
